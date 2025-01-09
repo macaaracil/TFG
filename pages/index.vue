@@ -4,7 +4,7 @@
 
 
 <template>
-  <Navbar />
+
   <div class="bg-gradient-to-b from-purple-500 to-purple-700 text-white min-h-screen">
     <!-- Hero Section -->
     <div class="flex flex-col items-center justify-center text-center py-20 px-4">
@@ -66,7 +66,7 @@
     </div>
   </div>
   <div class="">
-    <Footer />
+
   </div>
 
 </template>
