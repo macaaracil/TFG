@@ -3,9 +3,9 @@
 </script>
 
 <template>
-  <nav class="bg-purple-100 py-3 shadow-md">
-    <div class="max-w-7xl mx-auto px-4">
-      <ul class="flex justify-center space-x-10">
+  <nav class="py-10 ">
+    <div class="max-w-7xl mx-auto">
+      <ul class="flex justify-end space-x-10">
         <li>
           <NuxtLink to="/" class="text-gray-800 hover:text-hover-purple font-semibold"">
             INICIO
@@ -29,6 +29,7 @@
           </NuxtLink>
         </li>
       </ul>
+
     </div>
   </nav>
 </template>
