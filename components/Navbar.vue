@@ -11,15 +11,9 @@
             INICIO
           </NuxtLink>
         </li>
-        <li>
-          <NuxtLink to= " /actividades" class="text-gray-800 hover:text-hover-purple font-semibold">
-            ACTIVIDADES
-          </NuxtLink>
-        </li>
-
 
         <li>
-          <NuxtLink to="/blog" class="text-gray-800 hover:text-hover-purple font-semibold">
+          <NuxtLink to=" /blog" class="text-gray-800 hover:text-hover-purple font-semibold">
             BLOG
           </NuxtLink>
         </li>
@@ -27,6 +21,10 @@
           <NuxtLink to="/contacto" class="text-gray-800 hover:text-hover-purple font-semibold">
             CONTACTO
           </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="/tienda-cuentos" class="texte-gray-800 hove:text-hover-purple font-semibold">
+            LIBRERÍA</NuxtLink>
         </li>
       </ul>
 
