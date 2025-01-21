@@ -1,47 +1,58 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import fs from 'fs';
+import bcrypt from 'bcrypt';
+import pool from './db.js'; // conexión a la base de datos
 
 const app = express();
 const PORT = 3000;
 
-// Middleware para procesar datos JSON
+// Middleware  JSON
 app.use(bodyParser.json());
 
-const USERS_FILE = 'usuarios.json';
-
-// Ruta para registrar usuarios
-app.post('/api/registro', async (req, res) => {
-    const { nombre, email, password } = req.body;
-
-    if (!nombre || !email || !password) {
-        return res.status(400).json({ error: 'Todos los campos son obligatorios' });
-    }
-
-    let usuarios = [];
+//  probar conexión a la base de datos
+app.get('/api/usuarios', async (req, res) => {
     try {
-        const data = fs.readFileSync(USERS_FILE, 'utf-8');
-        usuarios = JSON.parse(data);
-    } catch {
-        console.log('Archivo usuarios.json no encontrado. Se creará uno nuevo.');
-    }
-
-    const usuarioExistente = usuarios.find(user => user.email === email);
-    if (usuarioExistente) {
-        return res.status(400).json({ error: 'El email ya está registrado' });
-    }
-
-    const nuevoUsuario = { nombre, email, password };
-    usuarios.push(nuevoUsuario);
-
-    try {
-        fs.writeFileSync(USERS_FILE, JSON.stringify(usuarios, null, 2));
-        res.status(201).json({ message: 'Usuario registrado exitosamente' });
-    } catch {
-        res.status(500).json({ error: 'Hubo un problema al registrar el usuario' });
+        const [rows] = await pool.query('SELECT * FROM usuarios');
+        res.json(rows);
+    } catch (error) {
+        console.error('Error al obtener usuarios:', error);
+        res.status(500).json({ error: 'Error al conectar con la base de datos' });
     }
 });
 
+// registrar un usuario
+app.post('/api/registro', async (req, res) => {
+    const { nombre, correo, contraseña, rol } = req.body;
+
+    // Validaciones 
+    if (!nombre || !correo || !contraseña) {
+        return res.status(400).json({ error: 'Todos los campos son obligatorios' });
+    }
+
+    try {
+        // Verificar si el correo ya está registrado
+        const [usuarioExistente] = await pool.query('SELECT id FROM usuarios WHERE correo = ?', [correo]);
+        if (usuarioExistente.length > 0) {
+            return res.status(400).json({ error: 'El correo ya está registrado' });
+        }
+
+        // Encriptar la contraseña
+        const hashedPassword = await bcrypt.hash(contraseña, 10);
+
+        // Insertar el nuevo usuario en la base de datos
+        await pool.query(
+            'INSERT INTO usuarios (nombre, correo, contraseña, rol) VALUES (?, ?, ?, ?)',
+            [nombre, correo, hashedPassword, rol || 'padre']
+        );
+
+        res.status(201).json({ mensaje: 'Usuario registrado con éxito' });
+    } catch (error) {
+        console.error('Error al registrar usuario:', error);
+        res.status(500).json({ error: 'Error interno del servidor' });
+    }
+});
+
+// Iniciar el servidor
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
