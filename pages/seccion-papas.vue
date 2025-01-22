@@ -15,26 +15,26 @@
         <!-- Tarjeta 1: Guías descargables -->
         <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition">
           <h3 class="text-xl font-bold text-blue-700 flex items-center mb-4">
-            <span class="mr-2">📘</span> Guías descargables
+            <span class="mr-2">📘</span> Guías de Actividades
           </h3>
           <p class="text-gray-600 mb-6">
             Accede a recursos educativos y guías prácticas para apoyar a tu hijo.
           </p>
           <NuxtLink to="/guias" class="btn-primary">
-            Ver Guías
+            Ver Actividades
           </NuxtLink>
         </div>
 
         <!-- Tarjeta 2: Consejos diarios -->
         <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition">
           <h3 class="text-xl font-bold text-yellow-600 flex items-center mb-4">
-            <span class="mr-2">💡</span> Consejos diarios
+            <span class="mr-2">💡</span> Alimentación
           </h3>
           <p class="text-gray-600 mb-6">
-            Descubre estrategias para el día a día que harán la diferencia.
+            La dietas es muy importante para el desarrollo de tu hijo, conoce más sobre este tema.
           </p>
-          <NuxtLink to="/consejos" class="btn-primary">
-            Ver Consejos
+          <NuxtLink to="/dietas" class="btn-primary">
+            Ver Dietas
           </NuxtLink>
         </div>
 

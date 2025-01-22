@@ -1,13 +1,8 @@
-<script lang="ts" setup>
+<script>
 
 </script>
-
 <template>
-  <div>
-    
-  </div>
+
+  <ActividadesPapasGuias></ActividadesPapasGuias>
+
 </template>
-
-<style>
-
-</style>

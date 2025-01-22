@@ -39,13 +39,13 @@
       <!-- Actividad 3 -->
       <div
         class="bg-white rounded-xl shadow-lg p-8 flex flex-col justify-between items-center h-60 hover:shadow-xl transition">
-        <h3 class="text-3xl font-bold text-blue-500 mb-4 text-center">🧩 Rompecabezas interactivos</h3>
+        <h3 class="text-3xl font-bold text-blue-500 mb-4 text-center">🧩 Pictogramas </h3>
         <p class="text-gray-600 text-lg text-center mb-6">
-          Mejora la resolución de problemas con rompecabezas diseñados para niños.
+          Pictogramas interactivos para estimular la memoria y la concentración.
         </p>
-        <NuxtLink to="/rompecabezas-interactivos"
+        <NuxtLink to="/pictogramas"
           class="bg-blue-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-600 transition">
-          Ver Rompecabezas
+          Ver Pictogramas
         </NuxtLink>
       </div>
     </div>

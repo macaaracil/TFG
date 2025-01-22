@@ -4,10 +4,8 @@
 
 <template>
   <div>
-    
+    <PictogramasDescargables></PictogramasDescargables>
   </div>
 </template>
 
-<style>
-
-</style>
+<style></style>
