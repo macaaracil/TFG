@@ -15,7 +15,7 @@ export default {
   methods: {
     async registrarUsuario() {
       try {
-        const response = await axios.post("http://localhost:3000/api/registro", this.form);
+        const response = await axios.post("http://localhost:3001/api/registro", this.form);
         this.mensaje = response.data.message;
         // Limpia el formularioo
         this.form.nombre = "";
